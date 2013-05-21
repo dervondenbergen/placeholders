@@ -38,11 +38,15 @@ input[readonly] {cursor:text!important;}
 label.navbar-inner {cursor:help;}
 
 .brand {
-  margin-left: 0px;
+  margin-left: 0px!important;
 }
 
 #search {
-  margin-right: 20px;
+  margin-right: 20px!important;
+}
+
+.icon:hover {
+  text-decoration: none;
 }
 
 a:not(.btn) {color:#9acd32!important;;}
@@ -60,7 +64,7 @@ a:not(.btn):hover {color:#81ab29!important;;}
   <div ng-app="project">
   <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-    <div class="brand">Placeholder Sites</div>
+    <div class="brand"><a href="http://dervondenbergen.github.io/placeholders/#/">Placeholder Sites</a></div>
     <input id="search" type="search" ng-model="search" class="search-query navbar-search pull-right" placeholder="Search"/>
 
   </div>
@@ -83,7 +87,7 @@ a:not(.btn):hover {color:#81ab29!important;;}
                   <th class="span2">Link</th>
                   <th class="span4">Basic Usage</th>
                   <th class="span2">Example</th>
-                  <th><a href="#/new"><span class="fontawesome-plus-sign"></span></a></th>
+                  <th><a class="icon" href="#/new"><span class="fontawesome-plus-sign"></span></a></th>
                 </tr>
               </thead>
               <tbody>
@@ -92,7 +96,7 @@ a:not(.btn):hover {color:#81ab29!important;;}
                   <td><a href="{{site.link}}">{{site.link}}</a></td>
                   <td><input type="text" value="{{site.usage}}"  onmouseover="this.select()" readonly="" onMouseUp="return false" class="span5"/></td>
                   <td><img src="{{site.img}}"/></td>
-                  <td><a href="#/edit/{{site._id.$oid}}"><span class="fontawesome-pencil"></span></a></td>
+                  <td><a class="icon" href="#/edit/{{site._id.$oid}}"><span class="fontawesome-pencil"></span></a></td>
                 </tr>
               </tbody>
             </table>
@@ -104,14 +108,14 @@ a:not(.btn):hover {color:#81ab29!important;;}
     <form name="myForm">
       <div class="control-group" ng-class="{error: myForm.name.$invalid}">
         <label>Name</label>
-          <input type="text" name="name" ng-model="site.name" required=""/>
+          <input type="text" class="span5" name="name" ng-model="site.name" required=""/>
         <span ng-show="myForm.name.$error.required" class="help-inline">
             Required</span>
       </div>
 
       <div class="control-group" ng-class="{error: myForm.link.$invalid}">
         <label>Link</label>
-          <input type="url" name="link" ng-model="site.link" required=""/>
+          <input type="url" class="span5" name="link" ng-model="site.link" required=""/>
         <span ng-show="myForm.link.$error.required" class="help-inline">
             Required</span>
         <span ng-show="myForm.link.$error.url" class="help-inline">
@@ -120,7 +124,7 @@ a:not(.btn):hover {color:#81ab29!important;;}
 
       <div class="control-group" ng-class="{error: myForm.usage.$invalid}">
         <label>Basic Usage <small>(use width:200px and height:300px)</small></label>
-          <input type="url" name="usage" ng-model="site.usage" required=""/>
+          <input type="url" class="span5" name="usage" ng-model="site.usage" required=""/>
         <span ng-show="myForm.usage.$error.required" class="help-inline">
             Required</span>
         <span ng-show="myForm.usage.$error.url" class="help-inline">
@@ -129,7 +133,7 @@ a:not(.btn):hover {color:#81ab29!important;;}
 
       <div class="control-group" ng-class="{error: myForm.img.$invalid}">
         <label>Example Image <small>(use width:200px and height:47px)</small></label>
-          <input type="url" name="img" ng-model="site.img" required=""/>
+          <input type="url" class="span5" name="img" ng-model="site.img" required=""/>
         <span ng-show="myForm.img.$error.required" class="help-inline">
             Required</span>
         <span ng-show="myForm.img.$error.url" class="help-inline">
@@ -139,7 +143,7 @@ a:not(.btn):hover {color:#81ab29!important;;}
       <br>
       <a href="#/" class="btn">Cancel</a>
       <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid"
-              class="btn btn-primary">Save</button>
+              class="btn hide btn-primary">Save</button>
       <button ng-click="destroy()"
               ng-show="site._id" class="btn btn-danger">Delete</button>
     </form>
