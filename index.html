@@ -37,6 +37,14 @@ input[readonly] {cursor:text!important;}
 
 label.navbar-inner {cursor:help;}
 
+.brand {
+  margin-left: 0px;
+}
+
+#search {
+  margin-right: 20px;
+}
+
 a:not(.btn) {color:#9acd32!important;;}
 
 a:not(.btn):hover {color:#81ab29!important;;}
@@ -50,7 +58,7 @@ a:not(.btn):hover {color:#81ab29!important;;}
 <body>
 
   <div ng-app="project">
-  <div class="navbar fixed-top">
+  <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="brand">Placeholder Sites</div>
     <input id="search" type="search" ng-model="search" class="search-query navbar-search pull-right" placeholder="Search"/>
