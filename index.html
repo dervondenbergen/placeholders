@@ -7,6 +7,13 @@
 
   <title>placeholders</title>
 
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="apple-touch-icon-precomposed" href="iOS.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
   <!--
 Copyright (c) 2013 by dervondenbergen (http://codepen.io/dervondenbergen/pen/BfoFr)
 
@@ -49,11 +56,44 @@ label.navbar-inner {cursor:help;}
   text-decoration: none;
 }
 
+.lead {margin-top:60px;}
+
 a:not(.btn) {color:#9acd32!important;;}
 
 a:not(.btn):hover {color:#81ab29!important;;}
 
 *:not(.btn) {color:#333!important;;}
+
+@media only screen and (max-width : 320px) {
+  td {
+    display: run-in;
+        border: none!important;
+
+}
+thead {
+    display: none;
+}
+td:nth-child(4), td:nth-child(5) {
+    display: none;
+}
+tr {
+    border-top: 1px solid #333;
+}
+#search {
+  display:none;
+}
+[ng-app="project"] {
+  overflow-x:hidden; 
+}
+
+.lead {margin-top:-10px;}
+
+.table-hover tbody tr:hover>td, .table-hover tbody tr:hover>th {
+    background: none!important;
+}
+
+  }
+}
 
   </style>
 
