@@ -1,0 +1,62 @@
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+input[readonly] {cursor:text!important;}
+
+label.navbar-inner {cursor:help;}
+
+.brand {
+  margin-left: 0px!important;
+}
+
+#search {
+  margin-right: 20px!important;
+}
+
+.icon:hover {
+  text-decoration: none;
+}
+
+.lead {margin-top:60px;}
+
+a:not(.btn) {color:#9acd32!important;;}
+
+a:not(.btn):hover {color:#81ab29!important;;}
+
+*:not(.btn) {color:#333!important;;}
+
+@media only screen and (max-width : 320px),
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+ {
+  td {
+    display: run-in;
+    border: none!important;
+  }
+  thead {
+    display: none;
+  }
+  td:nth-child(4), td:nth-child(5) {
+    display: none;
+  }
+  tr {
+    border-top: 1px solid #333;
+  }
+  #search {
+    display:none;
+  }
+  [ng-app="project"] {
+    overflow-x:hidden; 
+  }
+
+  .lead {margin-top:-10px;}
+
+  .table-hover tbody tr:hover>td, .table-hover tbody tr:hover>th {
+    background: none!important;
+
+  }
+}
