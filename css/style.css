@@ -2,61 +2,84 @@
 
 /* fontawesome */
 [class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
+	font-family:'FontAwesome', sans-serif;
 }
-
-input[readonly] {cursor:text!important;}
-
-label.navbar-inner {cursor:help;}
-
+input[readonly] {
+	cursor:text!important;
+}
+label.navbar-inner {
+	cursor:help;
+}
 .brand {
-  margin-left: 0px!important;
+	margin-left: 0px!important;
 }
-
 #search {
-  margin-right: 20px!important;
+	margin-right: 20px!important;
 }
-
 .icon:hover {
-  text-decoration: none;
+	text-decoration: none;
+}
+.lead {
+	margin-top:60px;
+}
+a:not(.btn) {
+	color:#9acd32!important;
+	;
+}
+a:not(.btn):hover {
+	color:#81ab29!important;
+	;
+}
+*:not(.btn) {
+	color:#333!important;
+	;
 }
 
-.lead {margin-top:60px;}
+@media(max-width:767px) {
+	body{
+		padding-left:0px!important;
+		padding-right:0px!important;
+	}
+	.lead {
+		margin-left:10px!important;
+	}
+	.brand {
+		margin-left:15px!important;
+	}
+}
 
-a:not(.btn) {color:#9acd32!important;;}
+@media only screen and (max-width : 480px), only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+	td {
+		display:list-item;
+		border: none!important;
+	}
+	thead {
+		display: none;
+	}
+	td:nth-child(5) {
+		display: none;
+	}
+	tr {
+		border-top: 1px solid #333;
+	}
+	
+	[ng-app="project"] {
+		overflow-x:hidden;
+	}
+	.lead {
+		margin-top:-10px;
+	}
+	.table-hover tbody tr>td, .table-hover tbody tr>th {
+		background: transparent!important;
+	}
 
-a:not(.btn):hover {color:#81ab29!important;;}
+	td > img {
+		margin-top:-10px;
+	}
+}
 
-*:not(.btn) {color:#333!important;;}
-
-@media only screen and (max-width : 320px),
-only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
- {
-  td {
-    display: run-in;
-    border: none!important;
-  }
-  thead {
-    display: none;
-  }
-  td:nth-child(4), td:nth-child(5) {
-    display: none;
-  }
-  tr {
-    border-top: 1px solid #333;
-  }
-  #search {
-    display:none;
-  }
-  [ng-app="project"] {
-    overflow-x:hidden; 
-  }
-
-  .lead {margin-top:-10px;}
-
-  .table-hover tbody tr:hover>td, .table-hover tbody tr:hover>th {
-    background: none!important;
-
-  }
+@media only screen and (max-width : 420px){
+	#search {
+		display:none;
+	}
 }

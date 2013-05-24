@@ -1,145 +1,119 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="UTF-8">
+		<title>placeholders</title>
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="apple-touch-icon-precomposed" href="iOS.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Copyright (c) 2013 by dervondenbergen (http://codepen.io/dervondenbergen/pen/BfoFr) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
+		<script src="js/angular.min.js"></script>
+		<script src="js/angular-resource.min.js">
+			
+		</script>
+		<script src="js/index.js" type="text/javascript"></script>
+		<!---->
+		<link rel="stylesheet" href="css/bootstrap.min.css" media="screen" type="text/css" />
+		<link rel="stylesheet" href="css/bootstrap-responsive.min.css" media="screen" type="text/css" />
+		<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+	</head>
+	<body>
+		<div ng-app="project">
+			<div class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="brand">
+						<a href="http://dervondenbergen.github.io/placeholders/#/">Placeholder Sites</a>
+					</div>
+					<input id="search" type="search" ng-model="search" class="hide-phone search-query navbar-search pull-right" placeholder="Search" />
+				</div>
+			</div>
+			<div class="container">
+				<div class="page">
+					<div class="row">
+						<div class="page">
+							<div class="span12">
+								<p class="lead">This is a List of Placeholder services</p>
+								<div ng-view></div>
+								<!--Show all-->
+								<script type="text/ng-template" id="list.html">
+									<table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th class="span2">Name</th>
+                        <th class="span2">Link</th>
+                        <th class="span4">Basic Usage</th>
+                        <th class="span2">Example</th>
+                        <th><a class="icon" href="#/new"><span class="fontawesome-plus-sign"></span></a></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="site in sites | filter:search | orderBy:'name'">
+                        <td>{{site.name}}</td>
+                        <td><a href = "{{site.link}}"> {{site.link}} </a></td>
+                        <td><input type = "text" value = "{{site.usage}}" onmouseover = "this.select()" readonly = "" onMouseUp = "return false" class = "span5" /></td>
+                        <td><img src="{{site.img}}"/ ></td>
+                        <td><a class="icon" href="#/edit / {{site._id.$oid}}"><span class="fontawesome - pencil "></span></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+								</script>
+								<!--Add Site-->
+								<script type="text/ng-template" id="add.html">
+									<form name="myForm">
+                    <div class="control-group" ng-class="{error: myForm.name.$invalid}">
+                      <label>Name</label>
+                      <input type="text" class="span5" name="name" ng-model="site.name" required=""/>
+                      <span ng-show="myForm.name.$error.required" class = "help-inline">Required</span>
+                    </div >
 
-<head>
+                    <div class="control-group" ng-class = "{error: myForm.link.$invalid}">
+                      <label>Link</label>
+                      <input type="url" class="span5" name="link" ng-model="site.link" required=""/>
+                      <span ng-show="myForm.link.$error.required" class = "help-inline">Required</span>
+                      <span ng-show="myForm.link.$error.url" class="help-inline">Not a URL</span>
+                    </div>
 
-  <meta charset="UTF-8">
+                    <div class="control-group" ng-class="{error: myForm.usage.$invalid}">
+                      <label>Basic Usage<small>(use width:200px and height:300px)</small></label>
+                      <input type="url" class="span5" name="usage" ng-model="site.usage" required=""/>
+                      <span ng-show="myForm.usage.$error.required" class = "help-inline">Required</span>
+                      <span ng-show="myForm.usage.$error.url" class="help-inline">Not a URL</span>
+                    </div>
 
-  <title>placeholders</title>
+                    <div class="control-group" ng-class="{error: myForm.img.$invalid}">
+                      <label>Example Image <small>(use width:200px and height:47px)</small></label>
+                      <input type="url" class="span5" name="img" ng-model="site.img" required=""/>
+                      <span ng-show = "myForm.img.$error.required" class = "help-inline">Required</span>
+                      <span ng-show="myForm.img.$error.url" class="help-inline">Not a URL</span>
+                    </div>
+                    <br>
+                    <a href="#/" class="btn ">Cancel</a>
+                    <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid " ng-hide="site._id " class="btn btn - primary ">Save</button>
+                    <button ng-click="destroy()" ng-show="site._id " class="btn btn - danger ">Delete</button>
+                  </form>
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			(function(i, s, o, g, r, a, m) {
+				i['GoogleAnalyticsObject'] = r;
+				i[r] = i[r] || function() {
+					(i[r].q = i[r].q || []).push(arguments)
+				}, i[r].l = 1 * new Date();
+				a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+				a.async = 1;
+				a.src = g;
+				m.parentNode.insertBefore(a, m)
+			})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-  <link rel="apple-touch-icon-precomposed" href="iOS.png">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-  <!--
-Copyright (c) 2013 by dervondenbergen (http://codepen.io/dervondenbergen/pen/BfoFr)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
--->
-
-  <script src="js/angular.min.js"></script>
-    <script src="js/angular-resource.min.js">
-    </script>
-      <script src="js/index.js" type="text/javascript"></script>
-
-<!---->
-<link rel="stylesheet" href="css/bootstrap.min.css" media="screen" type="text/css" />
-<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
-
-</head>
-
-<body>
-
-  <div ng-app="project">
-  <div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="brand"><a href="http://dervondenbergen.github.io/placeholders/#/">Placeholder Sites</a></div>
-    <input id="search" type="search" ng-model="search" class="search-query navbar-search pull-right" placeholder="Search"/>
-
-  </div>
-</div>
-<div class="container">
-  <div class="page">
-    <div class="row">
-      <div class="page">
-        <div class="span12">
-            <p class="lead">This is a List of Placeholder services</p>
-          <div ng-view></div>
-
-          <!--Show all-->
-
-            <script type="text/ng-template" id="list.html">
-            <table class="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th class="span2">Name</th>
-                  <th class="span2">Link</th>
-                  <th class="span4">Basic Usage</th>
-                  <th class="span2">Example</th>
-                  <th><a class="icon" href="#/new"><span class="fontawesome-plus-sign"></span></a></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="site in sites | filter:search | orderBy:'name'">
-                  <td>{{site.name}}</td>
-                  <td><a href="{{site.link}}">{{site.link}}</a></td>
-                  <td><input type="text" value="{{site.usage}}"  onmouseover="this.select()" readonly="" onMouseUp="return false" class="span5"/></td>
-                  <td><img src="{{site.img}}"/></td>
-                  <td><a class="icon" href="#/edit/{{site._id.$oid}}"><span class="fontawesome-pencil"></span></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </script>
-
-          <!--Add Site-->
-
-          <script type="text/ng-template" id="add.html">
-    <form name="myForm">
-      <div class="control-group" ng-class="{error: myForm.name.$invalid}">
-        <label>Name</label>
-          <input type="text" class="span5" name="name" ng-model="site.name" required=""/>
-        <span ng-show="myForm.name.$error.required" class="help-inline">
-            Required</span>
-      </div>
-
-      <div class="control-group" ng-class="{error: myForm.link.$invalid}">
-        <label>Link</label>
-          <input type="url" class="span5" name="link" ng-model="site.link" required=""/>
-        <span ng-show="myForm.link.$error.required" class="help-inline">
-            Required</span>
-        <span ng-show="myForm.link.$error.url" class="help-inline">
-            Not a URL</span>
-      </div>
-
-      <div class="control-group" ng-class="{error: myForm.usage.$invalid}">
-        <label>Basic Usage <small>(use width:200px and height:300px)</small></label>
-          <input type="url" class="span5" name="usage" ng-model="site.usage" required=""/>
-        <span ng-show="myForm.usage.$error.required" class="help-inline">
-            Required</span>
-        <span ng-show="myForm.usage.$error.url" class="help-inline">
-            Not a URL</span>
-      </div>
-
-      <div class="control-group" ng-class="{error: myForm.img.$invalid}">
-        <label>Example Image <small>(use width:200px and height:47px)</small></label>
-          <input type="url" class="span5" name="img" ng-model="site.img" required=""/>
-        <span ng-show="myForm.img.$error.required" class="help-inline">
-            Required</span>
-        <span ng-show="myForm.img.$error.url" class="help-inline">
-            Not a URL</span>
-      </div>
-
-      <br>
-      <a href="#/" class="btn">Cancel</a>
-      <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid" ng-hide="site._id" class="btn btn-primary">Save</button>
-      <button ng-click="destroy()" ng-show="site._id" class="btn btn-danger">Delete</button>
-    </form>
-  </script>
-
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
-</div>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-41112125-1', 'dervondenbergen.github.io');
-  ga('send', 'pageview');
-
-</script>
-
-</body>
+			ga('create', 'UA-41112125-1', 'dervondenbergen.github.io');
+			ga('send', 'pageview');
+		</script>
+	</body>
 
 </html>
