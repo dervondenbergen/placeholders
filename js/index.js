@@ -1,3 +1,17 @@
+var install = function() {
+    if (window.chrome && window.chrome.app) {
+        if (!window.chrome.app.isInstalled) {
+            try {
+                chrome.app.install;
+            } catch(e) {
+                alert(e + '\nEnable is about:flags');
+            }
+        } else {
+            output('This app is already installed.');
+        }
+    }
+};
+
 angular.module('project', ['mongolab']).
 config(function ($routeProvider) {
     $routeProvider.

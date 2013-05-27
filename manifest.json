@@ -1,0 +1,12 @@
+ {
+  "name": "placeholders",
+  "description" : "This is a List of Placeholder services",
+  "version": "1",
+  "minimum_chrome_version": "11",
+  "launch_url": "index.html",
+  "permissions":["clipboardWrite", "clipboardRead"],
+  "icons": {
+    "16": "iOS.png",
+    "128": "iOS.png"
+  },
+}
